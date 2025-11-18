@@ -1,10 +1,226 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My First Website</title>
-  </head>
-  <body>
-    <h1>Hello Ronald!</h1>
-    <p>This is your first live website.</p>
-  </body>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eczema Relief Lotion Demo</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
+  body{scroll-behavior:smooth;background:#fdf6f0;color:#333;overflow-x:hidden;}
+  a{text-decoration:none;color:inherit;}
+
+  header{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,0.95);display:flex;justify-content:space-between;align-items:center;padding:20px 50px;box-shadow:0 2px 10px rgba(0,0,0,0.1);z-index:1000;}
+  header h1{font-family:'Playfair Display',serif;font-size:2rem;color:#6a3e3e;}
+  nav a{margin-left:25px;font-weight:700;transition:0.3s;}
+  nav a:hover{color:#a0522d;}
+
+  .hero{height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;}
+  .hero video{position:absolute;top:50%;left:50%;width:100%;height:100%;object-fit:cover;transform:translate(-50%,-50%);z-index:0;}
+  .hero::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1;} /* Dark overlay so text is visible */
+  #particles{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;}
+  .hero-content{position:relative;z-index:2;color:#fff;max-width:700px;transform:translateY(50px);opacity:0;transition:all 1s ease;}
+  .hero-content.visible{transform:translateY(0);opacity:1;}
+  .hero h2{font-size:3rem;margin-bottom:20px;text-shadow:2px 2px 6px rgba(0,0,0,0.7);}
+  .hero p{font-size:1.2rem;margin-bottom:30px;text-shadow:1px 1px 4px rgba(0,0,0,0.6);}
+  .hero button{padding:15px 35px;font-size:1rem;border:none;border-radius:8px;cursor:pointer;background:#a0522d;color:#fff;transition:0.3s;}
+  .hero button:hover{background:#6a3e3e;transform:scale(1.05);box-shadow:0 0 20px #a0522d;}
+
+  section{padding:100px 50px;text-align:center;position:relative;z-index:1;transition:transform 0.8s ease, opacity 0.8s ease; opacity:0; transform:translateY(50px);}
+  section.visible{opacity:1; transform:translateY(0);}
+  section h2{font-family:'Playfair Display',serif;font-size:2.5rem;margin-bottom:50px;color:#6a3e3e;}
+
+  .products{display:grid;grid-template-columns: repeat(auto-fit,minmax(250px,1fr));gap:30px;}
+  .product-card{background:#fff;border-radius:20px;box-shadow:0 10px 20px rgba(0,0,0,0.1);padding:30px;transition:0.5s;cursor:pointer;position:relative;transform-style: preserve-3d;}
+  .product-card:hover{transform: rotateY(5deg) scale(1.05);box-shadow:0 20px 30px rgba(0,0,0,0.2);}
+  .product-card img{width:100%;border-radius:15px;margin-bottom:20px;}
+  .product-card h3{margin-bottom:15px;color:#a0522d;}
+  .product-card p{font-size:0.95rem;margin-bottom:20px;}
+  .product-card button{padding:10px 20px;background:#a0522d;color:#fff;border:none;border-radius:5px;cursor:pointer;transition:0.3s;}
+  .product-card button:hover{background:#6a3e3e;transform:scale(1.05);}
+
+  .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);justify-content:center;align-items:center;z-index:10000;}
+  .modal-content{background:#fff;padding:30px;border-radius:15px;max-width:500px;text-align:left;position:relative;}
+  .modal-content h3{color:#a0522d;margin-bottom:15px;}
+  .modal-content p{font-size:0.95rem;}
+  .close-modal{position:absolute;top:15px;right:15px;cursor:pointer;font-size:20px;}
+
+  .counters{display:flex;justify-content:space-around;flex-wrap:wrap;gap:30px;}
+  .counter{background:#fff3e6;border-radius:20px;padding:30px;flex:1;min-width:200px;}
+  .counter h3{font-size:2rem;margin-bottom:10px;color:#a0522d;}
+  .counter p{font-size:1rem;}
+
+  .faq{max-width:800px;margin:0 auto;text-align:left;}
+  .faq-item{background:#fff;margin-bottom:20px;border-radius:10px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
+  .faq-item h3{padding:20px;cursor:pointer;background:#a0522d;color:#fff;margin:0;}
+  .faq-item p{padding:0 20px 20px 20px;display:none;}
+
+  #chatbot{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#a0522d;border-radius:50%;cursor:pointer;display:flex;justify-content:center;align-items:center;color:#fff;font-weight:bold;font-size:20px;box-shadow:0 5px 15px rgba(0,0,0,0.2);z-index:10000;}
+  #chatbot:hover{background:#6a3e3e;}
+
+  footer{background:#a0522d;color:#fff;padding:50px;text-align:center;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>EczemaRelief</h1>
+  <nav>
+    <a href="#products">Products</a>
+    <a href="#counters">Benefits</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <video autoplay muted loop>
+    <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+  </video>
+  <canvas id="particles"></canvas>
+  <div class="hero-content">
+    <h2>Heal & Hydrate Your Skin</h2>
+    <p>Face lotion for eczema that soothes irritation, reduces dryness, and restores comfort.</p>
+    <button onclick="alert('Added to cart! (demo)')">Shop Now</button>
+  </div>
+</section>
+
+<section id="products">
+  <h2>Our Products</h2>
+  <div class="products">
+    <div class="product-card">
+      <img src="https://via.placeholder.com/400x400.png?text=Daily+Moisturizer" alt="Daily Moisturizer">
+      <h3>Daily Moisturizer</h3>
+      <p>Click for ingredients info</p>
+      <button onclick="window.location.href='https://example.com/product1'">Buy Now</button>
+    </div>
+    <div class="product-card">
+      <img src="https://via.placeholder.com/400x400.png?text=Intense+Repair+Cream" alt="Intense Repair Cream">
+      <h3>Intense Repair Cream</h3>
+      <p>Click for ingredients info</p>
+      <button onclick="window.location.href='https://example.com/product2'">Buy Now</button>
+    </div>
+    <div class="product-card">
+      <img src="https://via.placeholder.com/400x400.png?text=Night+Restore+Lotion" alt="Night Restore Lotion">
+      <h3>Night Restore Lotion</h3>
+      <p>Click for ingredients info</p>
+      <button onclick="window.location.href='https://example.com/product3'">Buy Now</button>
+    </div>
+  </div>
+</section>
+
+<section id="counters">
+  <h2>Benefits</h2>
+  <div class="counters">
+    <div class="counter">
+      <h3 id="counter1">0</h3>
+      <p>Users Report Softer Skin</p>
+    </div>
+    <div class="counter">
+      <h3 id="counter2">0</h3>
+      <p>Reduction in Dryness</p>
+    </div>
+    <div class="counter">
+      <h3 id="counter3">0</h3>
+      <p>Improved Comfort</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq">
+    <div class="faq-item">
+      <h3>Is this lotion safe for sensitive skin?</h3>
+      <p>Yes! Our lotion is formulated with natural, hypoallergenic ingredients perfect for sensitive skin.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How often should I apply it?</h3>
+      <p>Apply twice daily or as needed, especially after washing your face.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can children use it?</h3>
+      <p>Yes, it's gentle enough for all ages, but always consult your pediatrician for very young children.</p>
+    </div>
+  </div>
+</section>
+
+<div class="modal" id="ingredientModal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <h3 id="modalTitle">Ingredient Info</h3>
+    <p id="modalText">Lorem ipsum dolor sit amet, ingredients demo text.</p>
+  </div>
+</div>
+
+<div id="chatbot" onclick="alert('Hi! I can help you choose the best lotion for eczema. (demo)')">💬</div>
+
+<footer>
+  <p>&copy; 2025 EczemaRelief. All Rights Reserved.</p>
+</footer>
+
+<script>
+  // Scroll animations
+  const sections = document.querySelectorAll('section');
+  const heroContent = document.querySelector('.hero-content');
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('visible');}
+    });
+  }, {threshold:0.2});
+  sections.forEach(section=>observer.observe(section));
+  observer.observe(heroContent);
+
+  // FAQ toggle
+  document.querySelectorAll('.faq-item h3').forEach(item=>{
+    item.addEventListener('click',()=>{
+      const p = item.nextElementSibling;
+      p.style.display = (p.style.display==='block')?'none':'block';
+    });
+  });
+
+  // Counter animation
+  function animateCounter(id,target){
+    let count=0;
+    const el=document.getElementById(id);
+    const interval=setInterval(()=>{
+      count++;
+      el.innerText=count;
+      if(count>=target) clearInterval(interval);
+    },20);
+  }
+  window.addEventListener('scroll',()=>{
+    const counters = document.querySelector('#counters');
+    if(window.scrollY + window.innerHeight > counters.offsetTop + 100){
+      animateCounter('counter1',95);
+      animateCounter('counter2',90);
+      animateCounter('counter3',85);
+    }
+  },{once:true});
+
+  // Particle effect
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  function resize(){ width=canvas.width=window.innerWidth; height=canvas.height=window.innerHeight; }
+  window.addEventListener('resize',resize);
+  resize();
+  let particles=[];
+  class Particle{
+    constructor(){ this.x=Math.random()*width; this.y=Math.random()*height; this.size=Math.random()*3+1; this.speedX=Math.random()*0.5-0.25; this.speedY=Math.random()*0.5-0.25; }
+    update(){ this.x+=this.speedX; this.y+=this.speedY; if(this.x>width)this.x=0;if(this.x<0)this.x=width;if(this.y>height)this.y=0;if(this.y<0)this.y=height; }
+    draw(){ ctx.fillStyle='rgba(255,255,255,0.5)'; ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fill(); }
+  }
+  for(let i=0;i<100;i++)particles.push(new Particle());
+  function animate(){ ctx.clearRect(0,0,width,height); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(animate); }
+  animate();
+
+  // Modal for ingredient info
+  function openModal(title,text){
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalText').innerText = text;
+    document.getElementById('ingredientModal').style.display='flex';
+  }
+  function closeModal(){ document.getElementById('ingredientModal').style.display='none'; }
+</script>
+</body>
 </html>
