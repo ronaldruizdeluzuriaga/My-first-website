@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Daily Moisturizer — EczemaRelief (Demo)</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:"Montserrat",sans-serif;background:linear-gradient(180deg,#fbf8f6,#fff);color:#222;padding-top:84px}
+  header{position:fixed;left:0;right:0;top:0;height:84px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:rgba(255,255,255,0.96);box-shadow:0 8px 30px rgba(10,10,20,0.06);z-index:999}
+  .brand{display:flex;align-items:center;gap:10px}
+  .logo{width:44px;height:44;border-radius:10px;background:linear-gradient(135deg,#a45b49,#d19b7a);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-family:"Playfair Display",serif}
+  header h1{font-size:18px;color:#6a3e3e}
+  nav a{margin-left:14px;color:#444;font-weight:700}
+  .wrap{max-width:1100px;margin:0 auto;padding:22px}
+  .product-hero{display:flex;gap:28px;align-items:center;margin-top:30px}
+  .product-visual{flex:0 0 420px;background:#fff;border-radius:18px;padding:18px;box-shadow:0 18px 40px rgba(30,20,30,0.08)}
+  .product-visual img{width:100%;display:block;border-radius:12px}
+  .product-info{flex:1;background:transparent}
+  .product-info h2{font-family:"Playfair Display",serif;color:#6a3e3e;font-size:32px;margin-bottom:8px}
+  .price{font-size:22px;color:#a0522d;font-weight:800;margin-bottom:12px}
+  .desc{margin-bottom:16px;color:#333}
+  .row{display:flex;gap:12px;align-items:center}
+  .btn{background:#a0522d;color:#fff;padding:12px 16px;border-radius:10px;border:0;font-weight:800;cursor:pointer}
+  .btn.alt{background:#fff;color:#1e1e1e;border:2px solid #ddd}
+  .small{font-size:13px;color:#666;margin-top:10px}
+
+  /* ingredient list */
+  .ingredients{margin-top:18px;background:#fff;border-radius:12px;padding:12px;box-shadow:0 12px 30px rgba(0,0,0,0.04)}
+  .ingredients ul{list-style:none;padding-left:0}
+  .ingredients li{padding:8px 6px;border-bottom:1px dashed #eee;color:#444}
+
+  /* modal */
+  .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:9999;padding:18px}
+  .card{background:#fff;border-radius:12px;padding:18px;max-width:680px;width:100%;box-shadow:0 30px 70px rgba(0,0,0,0.35)}
+  .close{position:absolute;right:18px;top:18px;padding:6px 10px;background:#eee;border-radius:8px;cursor:pointer}
+
+  /* footer */
+  footer{margin-top:40px;padding:24px;text-align:center;color:#666;font-size:14px}
+  #cart-icon{position:fixed;right:18px;top:98px;width:54px;height:54px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(0,0,0,0.12);cursor:pointer;z-index:9999}
+  #cart-count{position:absolute;right:-6px;top:-6px;background:#a0522d;color:#fff;width:22px;height:22px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
+  #chat-bubble{position:fixed;right:18px;bottom:28px;width:62px;height:62px;border-radius:999px;background:linear-gradient(180deg,#a0522d,#6a3e3e);display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;cursor:pointer;box-shadow:0 18px 40px rgba(100,50,40,0.18);z-index:9999}
+  @media(max-width:880px){ .product-hero{flex-direction:column} .product-visual{width:92%} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">ER</div>
+    <div>
+      <h1>EczemaRelief</h1>
+      <div style="font-size:12px;color:#777">Daily Moisturizer — Demo</div>
+    </div>
+  </div>
+
+  <nav>
+    <a href="index.html">Shop</a>
+    <a href="cart.html">Cart</a>
+    <a href="chat.html">Chat</a>
+  </nav>
+</header>
+
+<div id="cart-icon" title="View cart" onclick="goToCart()">
+  🛒
+  <div id="cart-count" style="display:none">0</div>
+</div>
+
+<div id="chat-bubble" title="Chat demo" onclick="openChat()">💬</div>
+
+<main class="wrap">
+  <div class="product-hero">
+    <div class="product-visual" aria-hidden="false">
+      <img src="https://via.placeholder.com/700x700.png?text=Daily+Moisturizer+Bottle" alt="Daily Moisturizer">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+        <div><strong>Daily Moisturizer</strong><div style="font-size:13px;color:#666">50 ml</div></div>
+        <div style="text-align:right"><div class="price">$24.99</div></div>
+      </div>
+    </div>
+
+    <div class="product-info">
+      <h2>Daily Moisturizer</h2>
+      <div class="price">$24.99</div>
+      <div class="desc">Lightweight, fragrance-free lotion formulated for eczema-prone facial skin. Fast-absorbing, non-greasy, with ceramide support to repair the moisture barrier.</div>
+
+      <div class="row" style="margin-top:12px">
+        <button class="btn" onclick="addToCartAndGo('daily','Daily Moisturizer',24.99,'cart.html')">Add to cart</button>
+        <button class="btn alt" onclick="openIngredients()">View Ingredients</button>
+        <button class="btn alt" style="background:#fff;border:1px solid #ddd" onclick="window.location.href='index.html'">Back to Store</button>
+      </div>
+
+      <div class="small">Ships demo worldwide • 30-day demo returns</div>
+
+      <div class="ingredients" style="margin-top:18px">
+        <strong style="display:block;margin-bottom:8px">Quick ingredient highlights</strong>
+        <ul>
+          <li>Ceramides — help restore barrier</li>
+          <li>Aloe vera extract — soothes irritation</li>
+          <li>Glycerin — hydrates and attracts moisture</li>
+          <li>Fragrance-free • Hypoallergenic</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <section style="margin-top:28px">
+    <h3 style="font-family:'Playfair Display',serif;color:#6a3e3e">How to use</h3>
+    <p style="color:#444;max-width:760px">Apply twice daily after cleansing. Use a small amount and gently massage into affected areas. If irritation occurs, discontinue use (this is demo text).</p>
+  </section>
+
+</main>
+
+<!-- Modal for ingredients / confirmations -->
+<div id="modal" class="modal" role="dialog" aria-hidden="true">
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <strong id="modalTitle">Title</strong>
+      <div class="close" onclick="closeModal()">✕</div>
+    </div>
+    <div id="modalBody" style="color:#333"></div>
+    <div style="margin-top:16px;display:flex;gap:8px;justify-content:flex-end">
+      <button class="btn alt" onclick="closeModal()">Close</button>
+      <button class="btn" onclick="goToCart()">Go to Cart</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div style="font-weight:700">EczemaRelief — Demo Store</div>
+  <div style="margin-top:6px;color:#777">This is a demo product page — all checkout steps are simulated.</div>
+</footer>
+
+<script>
+/* Local cart (same key as index) */
+const CART_KEY = 'eczcart_demo_v1';
+function getCart(){ try{ return JSON.parse(localStorage.getItem(CART_KEY)) || []; }catch(e){ return []; } }
+function saveCart(cart){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateCartCount(); }
+function updateCartCount(){
+  const el = document.getElementById('cart-count');
+  const total = getCart().reduce((s,i)=>s + (i.qty||0),0);
+  if(total>0){ el.style.display='flex'; el.innerText = total; } else { el.style.display='none'; }
+}
+function addToCart(id,name,price,qty=1){
+  const cart = getCart();
+  const idx = cart.findIndex(i=>i.id===id);
+  if(idx>-1){ cart[idx].qty += qty; } else { cart.push({id,name,price,qty}); }
+  saveCart(cart);
+}
+
+/* helper actions used by page */
+function showModal(title,html){
+  document.getElementById('modalTitle').innerText = title;
+  document.getElementById('modalBody').innerHTML = html;
+  const m = document.getElementById('modal');
+  m.style.display='flex'; m.setAttribute('aria-hidden','false');
+}
+function closeModal(){ const m = document.getElementById('modal'); m.style.display='none'; m.setAttribute('aria-hidden','true'); }
+
+function addToCartAndGo(id,name,price,redirect){
+  addToCart(id,name,price,1);
+  showModal('Added to cart', `${name} — $${price.toFixed(2)} added to demo cart.`);
+  setTimeout(()=>{ window.location.href = redirect || 'cart.html'; }, 900);
+}
+
+/* simpler add + modal */
+function addToCartAndCheckout(id,name,price){
+  addToCart(id,name,price,1);
+  showModal('Added', `${name} added. Click "Go to Cart" to continue (demo).`);
+}
+
+/* UI helpers */
+function openIngredients(){
+  const html = `
+    <h4 style="margin-top:6px;color:#a0522d">Ingredient details (demo)</h4>
+    <p style="color:#333">This demo product contains ceramides, glycerin, aloe vera extract, and skin-conditioning agents designed to soothe and restore. No fragrances. (Demo text only.)</p>
+  `;
+  showModal('Ingredients', html);
+}
+function goToCart(){ window.location.href = 'cart.html'; }
+function openChat(){ window.location.href = 'chat.html'; }
+
+/* init */
+updateCartCount();
+
+/* small accessibility: close modal on ESC */
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ closeModal(); }});
+</script>
+
+</body>
+</html>

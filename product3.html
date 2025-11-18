@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soothing Night Serum – Product</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eef1f8;
+            color: #222;
+        }
+
+        .header {
+            background: #1c2b4a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+
+        .product-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 280px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #c7d3ed, #e9f0ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            color: #1c2b4a;
+            font-weight: bold;
+        }
+
+        .title {
+            margin-top: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            color: #1c2b4a;
+        }
+
+        .desc {
+            margin: 15px 0;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .price {
+            font-size: 28px;
+            margin: 10px 0;
+            color: #1c2b4a;
+            font-weight: bold;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 15px;
+            font-size: 20px;
+            background: #1c2b4a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover { background: #2d4268; }
+
+        .back {
+            margin-top: 20px;
+            text-align: center;
+            display: block;
+            font-size: 18px;
+            color: #1c2b4a;
+        }
+    </style>
+
+    <script>
+        function addToCart() {
+            window.location.href = "cart.html";
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="header">Soothing Night Serum</div>
+
+    <div class="product-container">
+
+        <div class="product-img">PRODUCT IMAGE</div>
+
+        <div class="title">Soothing Night Serum</div>
+
+        <div class="desc">
+            This ultra-lightweight overnight serum calms inflammation, repairs the skin barrier, 
+            and deeply hydrates eczema-prone skin while you sleep.  
+            Infused with hyaluronic acid, ceramides, and blue chamomile.
+        </div>
+
+        <div class="price">$24.99</div>
+
+        <button onclick="addToCart()">Add to Cart</button>
+
+        <a href="index.html" class="back">← Back to Home</a>
+
+    </div>
+
+</body>
+</html>
