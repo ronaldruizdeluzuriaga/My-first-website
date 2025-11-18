@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f3f6;
+            color: #222;
+        }
+
+        .header {
+            background: #0a2239;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+        }
+
+        .cart-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .price {
+            font-size: 20px;
+            color: #0a2239;
+            font-weight: bold;
+        }
+
+        .remove-btn {
+            background: red;
+            padding: 6px 12px;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .remove-btn:hover {
+            background: darkred;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 20px;
+            background: #0a2239;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .checkout-btn:hover { background: #133a5e; }
+
+        .back-btn {
+            width: 100%;
+            display: block;
+            text-align: center;
+            padding: 15px;
+            background: #0a2239;
+            color: white;
+            font-size: 19px;
+            text-decoration: none;
+            margin-top: 30px;
+            border-radius: 8px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="header">Your Cart</div>
+
+    <div class="cart-container" id="cartBox">
+
+        <!-- Fake items already inside your cart -->
+        <div class="item" id="item1">
+            <span class="name">HydraCalm Ultra Lotion</span>
+            <span class="price">$29.99</span>
+            <button class="remove-btn" onclick="removeItem('item1')">Remove</button>
+        </div>
+
+        <div class="item" id="item2">
+            <span class="name">Eczema Repair Balm</span>
+            <span class="price">$19.99</span>
+            <button class="remove-btn" onclick="removeItem('item2')">Remove</button>
+        </div>
+
+        <div class="item" id="item3">
+            <span class="name">Soothing Night Serum</span>
+            <span class="price">$24.99</span>
+            <button class="remove-btn" onclick="removeItem('item3')">Remove</button>
+        </div>
+
+    </div>
+
+    <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+
+    <a class="back-btn" href="index.html">← Back to Home</a>
+
+    <script>
+        function removeItem(id) {
+            let item = document.getElementById(id);
+            if (item) {
+                item.remove();
+            }
+        }
+
+        function checkout() {
+            window.location.href = "checkout.html";
+        }
+    </script>
+
+</body>
+</html>

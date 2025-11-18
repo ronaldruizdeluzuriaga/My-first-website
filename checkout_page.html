@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eef2f6;
+            color: #222;
+        }
+
+        .header {
+            background: #0a2239;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+        }
+
+        .checkout-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #0a2239;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #aaa;
+            font-size: 18px;
+        }
+
+        .order-summary {
+            background: #f4f7fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid #d1d9e6;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 18px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 16px;
+            margin-top: 20px;
+            font-size: 20px;
+            background: #0a2239;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .checkout-btn:hover { background: #133a5e; }
+
+        .back-btn {
+            width: 100%;
+            display: block;
+            text-align: center;
+            padding: 15px;
+            background: #0a2239;
+            color: white;
+            font-size: 19px;
+            text-decoration: none;
+            margin-top: 30px;
+            border-radius: 8px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="header">Checkout</div>
+
+    <div class="checkout-container">
+
+        <div class="section-title">Shipping Information</div>
+        <input type="text" placeholder="Full Name">
+        <input type="text" placeholder="Address">
+        <input type="text" placeholder="City">
+        <input type="text" placeholder="ZIP Code">
+
+        <div class="section-title">Payment Info</div>
+        <input type="text" placeholder="Card Number">
+        <input type="text" placeholder="Expiration Date (MM/YY)">
+        <input type="text" placeholder="CVV">
+
+        <div class="section-title">Order Summary</div>
+
+        <div class="order-summary">
+            <div class="summary-row">
+                <span>HydraCalm Ultra</span>
+                <span>$29.99</span>
+            </div>
+            <div class="summary-row">
+                <span>Eczema Repair Balm</span>
+                <span>$19.99</span>
+            </div>
+            <div class="summary-row">
+                <span>Soothing Night Serum</span>
+                <span>$24.99</span>
+            </div>
+
+            <hr style="margin: 15px 0;">
+
+            <div class="summary-row" style="font-weight: bold; font-size: 20px;">
+                <span>Total</span>
+                <span>$74.97</span>
+            </div>
+        </div>
+
+        <button class="checkout-btn" onclick="completeOrder()">Complete Order</button>
+
+        <a class="back-btn" href="cart.html">← Back to Cart</a>
+
+    </div>
+
+    <script>
+        function completeOrder() {
+            window.location.href = "thankyou.html";
+        }
+    </script>
+
+</body>
+</html>
